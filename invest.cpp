@@ -2,6 +2,7 @@
 
 vector<ExchangeRate> rates;
 map<string, Person> persons;
+map<string, Share> shares;
 
 
 double FindRate(string s, string e,double money) {
@@ -21,16 +22,16 @@ double FindRate(string s, string e,double money) {
 	return n;
 }
 
-double Share::totals = 0;
-
 void Share::invest(string investor, string currency, int number, double price) {
+	Person person(investor);
+	Invest investment(currency, number, price);
+	person.investments.push_back(investment);
 	if (persons.find(investor) == persons.end()) {
-		Person person(investor, currency, number, price);
 		persons[investor] = person;
 	}
-	double total = FindRate(currency, "CNY", number * price);        //问题：没有提前输入汇率会直接导致totals最后出错
-	totals += total;
-	persons[investor].changeTotal(total);
+	if (investors.find(investor) == investors.end()) {
+		investors[investor] = person;
+	}
 }
 
 
