@@ -5,6 +5,9 @@
 #include<algorithm>
 using namespace std;
 
+string test1();
+string test2();
+
 double FindRate(string s, string e, double money);
 
 class ExchangeRate;
@@ -44,14 +47,14 @@ public:
 	vector<Invest> investments;
 	Person() : name(""), pTotals(0.0) {}; 	
 	Person(string name) : name(name), pTotals(0.0) {}
-	double getpTotal(string e) { 
-		double pt = 0;
-		for (auto investment : investments) {
-			pt += investment.getValue(e);
-		}
-		pTotals = pt;
-		return pTotals;
+	Person(const Person& other);
+	Person& operator = (const Person& other){
+		name = other.name;
+		pTotals = other.pTotals;
+		investments = other.investments;
+		return *this;
 	}
+	double getpTotal(string e);
 };
 
 class Share {
@@ -63,12 +66,5 @@ public:
 	Share():name(""),totals(0.0) {};
 	Share(string name) :name(name),totals(0.0) {}
 	void invest(string investor, string currency, int number, double price);
-	double getTotal(string e) { 
-		double total = 0;
-		for (auto i = investors.begin(); i != investors.end();i++) {
-			total += i->second.getpTotal(e);
-		}
-		totals = total;
-		return totals;
-	}
+	double getTotal(string e);
 };

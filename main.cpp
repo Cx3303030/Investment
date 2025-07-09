@@ -1,10 +1,11 @@
 #include"invest.h"
 
 int main() {
-	
-	int num;
-	cin >> num;
-	for (int i = 0; i < num; i++) {
+	cout << "test1: " << test1() << endl;
+	cout << "test2: " << test2() << endl;
+	int n;
+	cin >> n;
+	for (int i = 0; i < n; i++) {
 		string name, investor, currency;
 		double price;
 		int number;
@@ -26,9 +27,9 @@ int main() {
 		rates.push_back(Rate);
 	}
 
-	int nm;
-	cin >> nm;
-	for (int i = 0; i < nm; i++) {
+	int k;
+	cin >> k;
+	for (int i = 0; i < k; i++) {
 		string mode, name, currency;
 		cin >> mode >> name >> currency;
 		if (mode == "PERSON") {
