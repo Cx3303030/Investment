@@ -3,6 +3,11 @@
 int main() {
 	cout << "test1: " << test1() << endl;
 	cout << "test2: " << test2() << endl;
+	cout << "test_rate1: " << test_rate1() << endl;	
+	cout << "test_rate2: " << test_rate2() << endl;
+	//cout << "test_rate3: " << test_rate3() << endl;
+
+
 	int n;
 	cin >> n;
 	for (int i = 0; i < n; i++) {

@@ -3,12 +3,19 @@
 #include<string>
 #include<map>
 #include<algorithm>
+#include<queue>
 using namespace std;
+
+const double MINIMUM = 1e-6;
 
 string test1();
 string test2();
+string test_rate1();
+string test_rate2();
 
+void buildGraph();
 double FindRate(string s, string e, double money);
+double findRateBFS(string source, string target);
 
 class ExchangeRate;
 class Person;
@@ -17,6 +24,8 @@ class Share;
 extern vector<ExchangeRate> rates;
 extern map<string, Person> persons;
 extern map<string, Share> shares;
+extern map<string, map<string, double>> graph;  //管理间接汇率
+
 
 class ExchangeRate {
 public:
