@@ -1,4 +1,16 @@
 #include"invest.h"
+string test_rate0() {
+	string s = "CNY";
+	string e = "USD";
+	double r = 0.139;
+	ExchangeRate rate(s, e, r);
+	if (rate.source == s && rate.exchange == e && rate.rate == r) {
+		return "pass";
+	}
+	else {
+		return "false";
+	}
+}
 //测试简单间接汇率换算
 string test_rate1() {
 	string source1 = "CNY";
@@ -21,6 +33,7 @@ string test_rate1() {
 		return "false";
 	}
 }
+
 //测试较复杂间接汇率换算
 string test_rate2() {
 	string source1 = "CNY";

@@ -1,5 +1,5 @@
 #include"invest.h"
-//综合测试1
+//综合测试1-模拟正常输入环境
 string test1() {
 	int n = 2;
 	while (n > 0) {

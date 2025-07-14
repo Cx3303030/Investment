@@ -8,10 +8,15 @@ using namespace std;
 
 const double MINIMUM = 1e-6;
 
-string test1();
-string test2();
+string test_rate0();
 string test_rate1();
 string test_rate2();
+string test_invest();
+string test_person();
+string test_share();
+string test1();
+string test2();
+
 
 void buildGraph();
 double FindRate(string s, string e, double money);
@@ -46,6 +51,9 @@ public:
 	Invest(string currency, int number, double price) :
 		currency(currency), number(number), price(price){}
 	double getValue(string e) { return FindRate(currency, e, price * number); }
+	string getCurrency() { return currency; }
+	double getPrice() { return price; }
+	int getNumble() { return number; }
 };
 
 class Person {
@@ -63,17 +71,20 @@ public:
 		investments = other.investments;
 		return *this;
 	}
+	void invest(string currency, int number, double price);
 	double getpTotal(string e);
+	string getName() { return name; }
 };
 
 class Share {
 private:
 	string name;
 	double totals;
-	map<string,Person> investors;
 public:
+	map<string,Person> investors;
 	Share():name(""),totals(0.0) {};
 	Share(string name) :name(name),totals(0.0) {}
 	void invest(string investor, string currency, int number, double price);
 	double getTotal(string e);
+	string getName() { return name; }
 };

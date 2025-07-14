@@ -12,6 +12,7 @@ void buildGraph() {
         graph[rate.exchange][rate.source] = 1.0 / rate.rate;  
     }
 }
+
 //返回两种货币之间的汇率，source为1，返回值为n倍target
 double findRateBFS(string source, string target) {
     if (source == target) return 1.0;
@@ -51,12 +52,14 @@ double FindRate(string s, string e, double money) {
     double rate = findRateBFS(s, e);
     return money * rate;
 }
-///复制构造函数
+
+//复制构造函数
 Person::Person(const Person& other) {
 	name = other.name;
 	pTotals = other.pTotals;
 	investments = other.investments;
 }
+
 //返回个人资产总值（需提供货币类型）
 double Person::getpTotal(string e) {
 	double pt = 0;
@@ -66,17 +69,20 @@ double Person::getpTotal(string e) {
 	pTotals = pt;
 	return pTotals;
 }
+void Person::invest(string currency, int number, double price) {
+	Invest investment(currency, number, price);
+	investments.push_back(investment);
+}
 //股票投资
 void Share::invest(string investor, string currency, int number, double price) {
 	Person person(investor);
-	Invest investment(currency, number, price);
 	if (persons.find(investor) == persons.end()) {
 		persons[investor] = person;
 	}
 	if (investors.find(investor) == investors.end()) {
 		investors[investor] = person;
 	}
-	persons[investor].investments.push_back(investment);
+	persons[investor].invest(currency, number, price);
 	investors[investor] = persons[investor];
 }
 
